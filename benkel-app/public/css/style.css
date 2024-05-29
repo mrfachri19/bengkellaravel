@@ -1,0 +1,38 @@
+.texthead {
+    padding: 170px;
+    color: white;
+}
+
+.textnote {
+    display: block;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+}
+
+.back_image {
+    margin-top: -60px;
+    background-image: url("/img/bgimg.png");
+    height: 800px;
+}
+
+.text_title {
+    font-size: 29px;
+    font-weight: 700;
+}
+
+.centered-card {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text_login {
+    font-size: 15px;
+    font-weight: 400;
+}
