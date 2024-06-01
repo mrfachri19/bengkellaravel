@@ -40,8 +40,9 @@
                                 <td>
                                     <a href="/tampilkansparepart/{{ $row->id }}" type="button"
                                         class="btn btn-success"><i class="fas fa-solid fa-pen"></i></a>
-                                    <a href="/deletesparepart/{{ $row->id }}" type="button" class="btn btn-danger"><i
-                                            class="fas fa-solid fa-trash"></i></a>
+                                    <a href="#" data-id="{{ $row->id }}"
+                                        type="button" class="btn btn-danger"><i
+                                            class="fas fa-solid fa-trash delete"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -55,4 +56,30 @@
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script>
+        $('.delete').click(function() {
+            var dataid = $(this).attr('data-id');
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Kamu yakin ingin menghapus data ini!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "/deletesparepart/" + dataid + ""
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

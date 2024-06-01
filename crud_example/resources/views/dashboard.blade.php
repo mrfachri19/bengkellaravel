@@ -7,19 +7,18 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard v2</h1>
+                    <h1 class="m-0">Dashboard</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v2</li>
+                        <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -89,7 +88,7 @@
             </div>
             <!-- /.row -->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -228,11 +227,11 @@
                     <!-- /.card -->
                 </div>
                 <!-- /.col -->
-            </div>
+            </div> --}}
             <!-- /.row -->
 
             <!-- Main row -->
-            <div class="row">
+            {{-- <div class="row">
                 <!-- Left col -->
                 <div class="col-md-8">
                     <!-- MAP & BOX PANE -->
@@ -905,7 +904,7 @@
                     <!-- /.card -->
                 </div>
                 <!-- /.col -->
-            </div>
+            </div> --}}
             <!-- /.row -->
         </div><!--/. container-fluid -->
     </section>

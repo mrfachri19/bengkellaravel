@@ -36,6 +36,8 @@ Route::get('/datahistori', [ServiceController::class, 'datahistori'])->name('dat
 Route::get('/tambahserviceuser', [ServiceController::class, 'tambahserviceuser'])->name('tambahserviceuser')->middleware('auth');
 Route::post('/insertserviceuser', [ServiceController::class, 'insertserviceuser'])->name('insertserviceuser')->middleware('auth');
 
+Route::get('/tampilkanuser/{id}', [LoginController::class, 'tampilkanuser'])->name('tampilkanuser');
+Route::post('/updateuser/{id}', [LoginController::class, 'updateuser'])->name('updateuser');
 
 Route::get('/pegawai', [EmployeeController::class, 'index'])->name('pegawai');
 Route::get('/tambahpegawai', [EmployeeController::class, 'tambahpegawai'])->name('tambahpegawai');
