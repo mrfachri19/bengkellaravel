@@ -16,8 +16,22 @@
             </div><!-- /.container-fluid -->
         </div>
         <div class="container">
-            <form class="card p-3" method="POST" action="/insertserviceuser">
+            <form class="card p-3" method="POST" action="/insertserviceadmin">
                 @csrf
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Pilih User</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="iduser">
+                        <option selected disabled>Pilih User</option>
+                        @foreach ($dataUser as $row)
+                            <option value="{{ $row->id }}">{{ $row->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('jam'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('jam') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">

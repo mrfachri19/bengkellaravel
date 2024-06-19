@@ -12,8 +12,10 @@
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
-        </div>
+        </div>  
         <div class="container">
+            <a href="/tambahserviceadmin" type="button" class="btn btn-primary my-2">Tambah <i
+                    class="fas fa-solid fa-plus"></i></a>
             <div class="p-3 card">
                 <table class="table table-bordered">
                     <thead>
@@ -40,7 +42,7 @@
                                 <td>
                                     <a href="/tampilkanservice/{{ $row->id }}" type="button"
                                         class="btn btn-success">Detail</a>
-                                    <a href="/deletesparepart/{{ $row->id }}" type="button" class="btn btn-danger"><i
+                                    <a href="/deleteservice/{{ $row->id }}" type="button" class="btn btn-danger"><i
                                             class="fas fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>

@@ -24,6 +24,10 @@ class KategoriController extends Controller
     }
     public function insertkategori(Request $request)
     {
+        $this->validate($request, [
+            'nama' => 'required',
+            'kode' => 'required',
+        ]);
         Kategori::create($request->all());
         return redirect()->route('datakategori')->with('success', 'data berhasil ditambahkan !');
     }

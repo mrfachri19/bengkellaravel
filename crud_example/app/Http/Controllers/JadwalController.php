@@ -24,6 +24,11 @@ class JadwalController extends Controller
     }
     public function insertjadwal(Request $request)
     {
+        $this->validate($request, [
+            'day' => 'required',
+            'starttime' => 'required',
+            'endtime' => 'required',
+        ]);
         Jadwal::create($request->all());
         return redirect()->route('datajadwal')->with('success', 'data berhasil ditambahkan !');
     }

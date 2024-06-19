@@ -23,6 +23,11 @@ class SparepartController extends Controller
     }
     public function insertsparepart(Request $request)
     {
+        $this->validate($request, [
+            'nama' => 'required',
+            'harga' => 'required',
+            'jumlahsatuan' => 'required',
+        ]);
         Sparepart::create($request->all());
         return redirect()->route('datasparepart')->with('success', 'data berhasil ditambahkan !');
     }

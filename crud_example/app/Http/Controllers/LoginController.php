@@ -19,6 +19,10 @@ class LoginController extends Controller
     }
     public function loginproses(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
         if (Auth::attempt($request->only('email', 'password'))) {
             if (Auth::user()->isAdmin()) {
                 return redirect('/dashboard');
@@ -26,7 +30,7 @@ class LoginController extends Controller
                 return redirect('/tambahserviceuser');
             }
         }
-        return redirect('login');
+        return redirect('login')->withErrors(['password' => 'Wrong password']);
     }
 
     public function register()
@@ -35,7 +39,12 @@ class LoginController extends Controller
     }
     public function registeruser(Request $request)
     {
-        // dd($request->all());
+        $this->validate($request, [
+            'name' => 'required',
+            'notelpon' => 'required',
+            'password' => 'required',
+            'email' => 'required|email',
+        ]);
         User::create([
             'name' => $request->name,
             'email' => $request->email,

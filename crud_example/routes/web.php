@@ -50,7 +50,10 @@ Route::get('/deletedata/{id}', [EmployeeController::class, 'deletedata'])->name(
 Route::middleware(['auth', 'hakakses:admin'])->group(function () {
     Route::get('/dataservice', [ServiceController::class, 'dataservice'])->name('dataservice')->middleware('auth');
     Route::get('/tampilkanservice/{id}', [ServiceController::class, 'tampilkanservice'])->name('tampilkanservice')->middleware('auth');
+    Route::get('/tambahserviceadmin', [ServiceController::class, 'tambahserviceadmin'])->name('tambahserviceadminr')->middleware('auth');
+    Route::post('/insertserviceadmin', [ServiceController::class, 'insertserviceadmin'])->name('insertserviceadmin')->middleware('auth');
     Route::post('/updateservice/{id}', [ServiceController::class, 'updateservice'])->name('updateservice')->middleware('auth');
+    Route::get('/deleteservice/{id}', [ServiceController::class, 'deleteservice'])->name('deleteservice');
     Route::get('/invoice/{id}', [ServiceController::class, 'invoice'])->name('invoice');
     Route::get('/exportpdf/{id}', [ServiceController::class, 'exportpdf'])->name('exportpdf');
 

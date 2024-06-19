@@ -17,18 +17,27 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Jenis Sparepart</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Nama Sparepart" name="nama">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama Sparepart"
+                        name="nama">
+                    @error('nama')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Jumlah</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Jumlah Sparepart" name="jumlahsatuan">
+                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Jumlah Sparepart"
+                        name="jumlahsatuan">
+                    @error('jumlahsatuan')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Harga Satuan</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Harga Satuan" name="harga">
+                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Harga Satuan"
+                        name="harga">
+                    @error('harga')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-info">Submit</button>
             </form>

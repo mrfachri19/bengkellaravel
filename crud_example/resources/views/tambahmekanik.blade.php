@@ -17,13 +17,19 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Nama Karyawan</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Nama Karyawan" name="nama">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama Karyawan"
+                        name="nama">
+                    @error('nama')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Kode Karyawn</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Kode Karyawan" name="kodekaryawan">
+                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Kode Karyawan"
+                        name="kodekaryawan">
+                    @error('kodekaryawan')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-info">Submit</button>
             </form>

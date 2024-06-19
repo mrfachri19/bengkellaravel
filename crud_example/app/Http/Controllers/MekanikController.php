@@ -23,6 +23,10 @@ class MekanikController extends Controller
     }
     public function insertmekanik(Request $request)
     {
+        $this->validate($request, [
+            'nama' => 'required',
+            'kodekaryawan' => 'required',
+        ]);
         Mekanik::create($request->all());
         return redirect()->route('datamekanik')->with('success', 'data berhasil ditambahkan !');
     }

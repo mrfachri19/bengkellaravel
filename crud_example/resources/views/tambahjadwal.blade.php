@@ -26,16 +26,25 @@
                         <option value="sabtu">Sabtu</option>
                         <option value="minggu">Minggu</option>
                     </select>
+                    @error('day')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Jam Mulai</label>
                     <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="Jam Mulai"
                         name="starttime">
+                    @error('starttime')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Jam Selesai</label>
                     <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="Jam Selesai"
                         name="endtime">
+                    @error('endtime')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-info">Submit</button>
             </form>

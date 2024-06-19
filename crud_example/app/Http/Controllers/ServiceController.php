@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Models\Kategori;
 use App\Models\Mekanik;
 use App\Models\Sparepart;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,9 +33,24 @@ class ServiceController extends Controller
         $data = Kategori::all();
         return view('tambahserviceuser',  compact('data'));
     }
+    public function tambahserviceadmin()
+    {
+        $dataUser = User::where('role', 'user')->get();
+        $data = Kategori::all();
+        return view('tambahserviceadmin',  compact('data', 'dataUser'));
+    }
+
 
     public function insertserviceuser(Request $request)
     {
+        $this->validate($request, [
+            'idkategori' => 'required|integer',
+            'nomorpolisi' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'jam' => 'required|date_format:H:i',
+            'keluhan' => 'required|string|max:255',
+        ]);
+
         Service::create([
             'idkategori' => $request->idkategori,
             'iduser' => Auth::user()->id,
@@ -45,6 +61,28 @@ class ServiceController extends Controller
             'status' => 'New',
         ]);
         return redirect()->route('datahistori')->with('success', 'Data berhasil ditambahkan!');
+    }
+
+    public function insertserviceadmin(Request $request)
+    {
+        $this->validate($request, [
+            'idkategori' => 'required|integer',
+            'nomorpolisi' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'jam' => 'required|date_format:H:i',
+            'keluhan' => 'required|string|max:255',
+        ]);
+
+        Service::create([
+            'idkategori' => $request->idkategori,
+            'iduser' => $request->iduser,
+            'nomorpolisi' => $request->nomorpolisi,
+            'tanggal' => $request->tanggal,
+            'jam' => $request->jam,
+            'keluhan' => $request->keluhan,
+            'status' => 'New',
+        ]);
+        return redirect()->route('dataservice')->with('success', 'Data berhasil ditambahkan!');
     }
 
     public function tampilkanservice($id)
@@ -58,7 +96,7 @@ class ServiceController extends Controller
 
     public function updateservice(Request $request, $id)
     {
-        $request->validate([
+        $this->validate($request, [
             'idmekanik' => 'required|exists:mekaniks,id',
             'idsparepart' => 'required|exists:spareparts,id',
             'status' => 'required|string',
@@ -86,5 +124,11 @@ class ServiceController extends Controller
         view()->share('service', $service);
         $pdf = Pdf::loadView('datainvoice-pdf');
         return $pdf->download('invoice.pdf');
+    }
+    public function deleteservice($id)
+    {
+        $data = Service::find($id);
+        $data->delete();
+        return redirect()->route('dataservice')->with('success', 'data berhasil dihapus !');
     }
 }
