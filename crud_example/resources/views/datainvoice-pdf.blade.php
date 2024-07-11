@@ -50,7 +50,11 @@
         </tr>
         <tr>
             <th>Sparepart</th>
-            <td>{{ $service->sparepart->nama }}</td>
+            <td>
+                @foreach ($service->spareparts as $sparepart)
+                    {{ $sparepart->nama }}{{ !$loop->last ? ', ' : '' }}
+                @endforeach
+            </td>
         </tr>
         <tr>
             <th>ToTal</th>

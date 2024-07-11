@@ -87,35 +87,45 @@ class ServiceController extends Controller
 
     public function tampilkanservice($id)
     {
-        $data = Service::with('user', 'kategori', 'mekanik', 'sparepart')->find($id);
+        $data = Service::with('user', 'kategori', 'mekanik', 'spareparts')->find($id);
         $allMekanik = Mekanik::all();
         $allSparepart = Sparepart::all();
 
         return view('tampilkanservice', compact('data', 'allMekanik', 'allSparepart'));
     }
 
-    public function updateservice(Request $request, $id)
+    public function updateService(Request $request, $id)
     {
         $this->validate($request, [
             'idmekanik' => 'required|exists:mekaniks,id',
-            'idsparepart' => 'required|exists:spareparts,id',
+            'idspareparts.*' => 'required|exists:spareparts,id',
             'status' => 'required|string',
-            'jumlah' => 'required|numeric',
+            'jumlah.*' => 'required|integer|min:1',
+            'totalHarga' => 'required|integer|min:0',
         ]);
 
         $data = Service::findOrFail($id);
+
+        // Update data service
         $data->update([
             'idmekanik' => $request->idmekanik,
-            'idsparepart' => $request->idsparepart,
             'status' => $request->status,
-            'jumlah' => $request->jumlah,
+            'jumlah' => $request->totalHarga, // Assuming 'jumlah' is the total price in 'services' table
         ]);
+
+        // Sync spareparts with quantities
+        $spareparts = [];
+        foreach ($request->idspareparts as $sparepartId) {
+            $spareparts[$sparepartId] = ['jumlah' => $request->jumlah[$sparepartId]];
+        }
+        $data->spareparts()->sync($spareparts);
 
         return redirect()->route('invoice', $data->id)->with('success', 'Data berhasil diupdate!');
     }
+
     public function invoice($id)
     {
-        $service = Service::findOrFail($id);
+        $service = Service::with('spareparts')->findOrFail($id);
         return view('invoice', compact('service'));
     }
     public function exportpdf($id)

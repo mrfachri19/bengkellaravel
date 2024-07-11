@@ -65,7 +65,7 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Jam Polisi</label>
+                            <label for="exampleFormControlInput1">Jam Service</label>
                             <input type="time" class="form-control" id="exampleFormControlInput1" name="jam"
                                 placeholder="name@example.com">
                             @if ($errors->has('jam'))
