@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mekanik;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MekanikController extends Controller
 {
@@ -41,5 +42,13 @@ class MekanikController extends Controller
         $data = Mekanik::find($id);
         $data->delete();
         return redirect()->route('datamekanik')->with('success', 'data berhasil dihapus !');
+    }
+    public function exportpdfmekanik()
+    {
+        $mekanik = Mekanik::all(); 
+
+        view()->share(['mekanik' => $mekanik, 'mekaniks' => $mekanik]);
+        $pdf = Pdf::loadView('datamekanik-pdf');
+        return $pdf->download('mekanik.pdf');
     }
 }

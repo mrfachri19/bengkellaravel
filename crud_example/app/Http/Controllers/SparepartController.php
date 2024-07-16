@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sparepart;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SparepartController extends Controller
 {
@@ -42,5 +43,13 @@ class SparepartController extends Controller
         $data = Sparepart::find($id);
         $data->delete();
         return redirect()->route('datasparepart')->with('success', 'data berhasil dihapus !');
+    }
+    public function exportpdfsparepart()
+    {
+        $sparepart = Sparepart::all(); 
+
+        view()->share(['sparepart' => $sparepart, 'spareparts' => $sparepart]);
+        $pdf = Pdf::loadView('datasparepart-pdf');
+        return $pdf->download('sparepart.pdf');
     }
 }

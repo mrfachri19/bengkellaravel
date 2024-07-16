@@ -63,6 +63,7 @@ Route::middleware(['auth', 'hakakses:admin'])->group(function () {
     Route::get('/tampilkansparepart/{id}', [SparepartController::class, 'tampilkansparepart'])->name('tampilkansparepart')->middleware('auth');
     Route::post('/updatesparepart/{id}', [SparepartController::class, 'updatesparepart'])->name('updatesparepart')->middleware('auth');
     Route::get('/deletesparepart/{id}', [SparepartController::class, 'deletesparepart'])->name('deletesparepart')->middleware('auth');
+    Route::get('/exportpdfsparepart', [SparepartController::class, 'exportpdfsparepart'])->name('exportpdfsparepart');
 
     Route::get('/datamekanik', [MekanikController::class, 'datamekanik'])->name('datamekanik')->middleware('auth');
     Route::get('/tambahmekanik', [MekanikController::class, 'tambahmekanik'])->name('tambahmekanik')->middleware('auth');
@@ -70,6 +71,7 @@ Route::middleware(['auth', 'hakakses:admin'])->group(function () {
     Route::get('/tampilkanmekanik/{id}', [MekanikController::class, 'tampilkanmekanik'])->name('tampilkanmekanik')->middleware('auth');
     Route::post('/updatemekanik/{id}', [MekanikController::class, 'updatemekanik'])->name('updatemekanik')->middleware('auth');
     Route::get('/deletemekanik/{id}', [MekanikController::class, 'deletemekanik'])->name('deletemekanik')->middleware('auth');
+    Route::get('/exportpdfmekanik', [MekanikController::class, 'exportpdfmekanik'])->name('exportpdfmekanik');
 
     Route::get('/datakategori', [KategoriController::class, 'datakategori'])->name('datakategori')->middleware('auth');
     Route::get('/tambahkategori', [KategoriController::class, 'tambahkategori'])->name('tambahkategori')->middleware('auth');
@@ -77,6 +79,7 @@ Route::middleware(['auth', 'hakakses:admin'])->group(function () {
     Route::get('/tampilkankategori/{id}', [KategoriController::class, 'tampilkankategori'])->name('tampilkankategori')->middleware('auth');
     Route::post('/updatekategori/{id}', [KategoriController::class, 'updatekategori'])->name('updatekategori')->middleware('auth');
     Route::get('/deletekategori/{id}', [KategoriController::class, 'deletekategori'])->name('deletekategori')->middleware('auth');
+    Route::get('/exportpdfkategori', [KategoriController::class, 'exportpdfkategori'])->name('exportpdfkategori');
 
     Route::get('/datajadwal', [JadwalController::class, 'datajadwal'])->name('datajadwal')->middleware('auth');
     Route::get('/tambahjadwal', [JadwalController::class, 'tambahjadwal'])->name('tambahjadwal')->middleware('auth');
@@ -84,4 +87,5 @@ Route::middleware(['auth', 'hakakses:admin'])->group(function () {
     Route::get('/tampilkanjadwal/{id}', [JadwalController::class, 'tampilkanjadwal'])->name('tampilkanjadwal')->middleware('auth');
     Route::post('/updatejadwal/{id}', [JadwalController::class, 'updatejadwal'])->name('updatejadwal')->middleware('auth');
     Route::get('/deletejadwal/{id}', [JadwalController::class, 'deletejadwal'])->name('deletejadwal')->middleware('auth');
+    Route::get('/exportpdfjadwal', [JadwalController::class, 'exportpdfjadwal'])->name('exportpdfjadwal');
 });

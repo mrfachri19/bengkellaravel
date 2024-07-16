@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class JadwalController extends Controller
 {
@@ -43,6 +44,14 @@ class JadwalController extends Controller
         $data = Jadwal::find($id);
         $data->delete();
         return redirect()->route('datajadwal')->with('success', 'data berhasil dihapus !');
+    }
+    public function exportpdfjadwal()
+    {
+        $jadwal = Jadwal::all(); 
+
+        view()->share(['jadwal' => $jadwal, 'jadwals' => $jadwal]);
+        $pdf = Pdf::loadView('datajadwal-pdf');
+        return $pdf->download('jadwal.pdf');
     }
 }
 

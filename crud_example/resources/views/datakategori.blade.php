@@ -16,6 +16,7 @@
         <div class="container">
             <a href="/tambahkategori" type="button" class="btn btn-primary my-2">Tambah <i
                     class="fas fa-solid fa-plus"></i></a>
+                    <a href="/exportpdfkategori" type="button" class="btn btn-primary my-2">Download</a>
             <div class="p-3 card">
                 <table class="table table-bordered">
                     <thead>

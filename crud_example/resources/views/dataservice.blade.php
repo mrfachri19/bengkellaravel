@@ -12,7 +12,7 @@
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
-        </div>  
+        </div>
         <div class="container">
             <a href="/tambahserviceadmin" type="button" class="btn btn-primary my-2">Tambah <i
                     class="fas fa-solid fa-plus"></i></a>

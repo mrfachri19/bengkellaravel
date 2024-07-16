@@ -16,6 +16,7 @@
         <div class="container">
             <a href="/tambahmekanik" type="button" class="btn btn-primary my-2">Tambah <i
                     class="fas fa-solid fa-plus"></i></a>
+            <a href="/exportpdfmekanik" type="button" class="btn btn-primary my-2">Download</a>
             <div class="p-3 card">
                 <table class="table table-bordered">
                     <thead>
@@ -64,7 +65,7 @@
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location = "/deletemekanik/"+dataid+""
+                    window.location = "/deletemekanik/" + dataid + ""
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",

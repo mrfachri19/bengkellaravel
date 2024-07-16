@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class KategoriController extends Controller
 {
@@ -42,5 +43,13 @@ class KategoriController extends Controller
         $data = Kategori::find($id);
         $data->delete();
         return redirect()->route('datakategori')->with('success', 'data berhasil dihapus !');
+    }
+    public function exportpdfkategori()
+    {
+        $kategori = Kategori::all(); 
+
+        view()->share(['kategori' => $kategori, 'kategoris' => $kategori]);
+        $pdf = Pdf::loadView('datakategori-pdf');
+        return $pdf->download('kategori.pdf');
     }
 }
